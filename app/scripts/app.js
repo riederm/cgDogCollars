@@ -12,6 +12,10 @@ angular.module('cgDogCollarsApp', ['ui.bootstrap'
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/collection', {
+        templateUrl: 'views/collection.html',
+        controller: 'CollectionCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

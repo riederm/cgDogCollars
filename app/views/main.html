@@ -4,32 +4,30 @@
       <li><a ng-href="#">About</a></li>
       <li><a ng-href="#">Contact</a></li>
     </ul>-->
-    <a class="lead" href="/"> 
+    <a class="lead" href="./"> 
         <img src="images/logo.jpg" alt="" width="350"/> 
     </a>
 </div>
 
 <div class="row minWidthContainer">
     <div class="col-xs-4 leftColumn">
+        <a href="./index.html#/collection">
         <img class ="navigationButton" src="images/collection.png"> <br>
         <h2>Kollektion</h2>
+       </a> 
         <p>Lorem ipsum dolor sit amet, 
             consetetur sadipscing elitr, sed diam 
             nonumy eirmod tempor invidunt ut labore 
             et dolore magna aliquyam erat, sed diam voluptua.</p>
-
+        
     </div>
 
 
     <div class="col-xs-4 midColumn" align="center">
-        <carousel interval="myInterval">
-      <slide ng-repeat="slide in slides" active="slide.active">
-        <img ng-src="{{slide.image}}" style="margin:auto;">
-        <div class="carousel-caption">
-          <h4>Slide {{$index}}</h4>
-          <p>{{slide.text}}</p>
-        </div>
-      </slide>
+        <carousel interval="carousel.interval">
+      <slide ng-repeat="slide in carousel.slides" active="slide.active">
+        <img ng-src="{{slide.image}}" style="margin:auto; height:300px">
+       </slide>
     </carousel>
     </div>
 
