@@ -59,6 +59,39 @@ body {
   margin-top: 28px;
 }
 
+.navigationButton {
+        width: 200px;
+/*      height: 170px; */
+        padding-bottom: 15px;
+        padding-top: 160px;
+}
+
+.leftColumn{
+    float:left;
+    text-align: right;
+}
+
+.midColumn{
+        display: block;
+}
+
+.midColumn div{
+        display: block;
+}
+
+.rightColumn {
+        text-align: left;
+}
+
+.sliderImg{
+        width: 200px;
+}
+
+.carousel-control{
+        visibility: hidden;
+}
+
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */

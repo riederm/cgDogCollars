@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('cgDogCollarsApp', [
-  'ngCookies',
+angular.module('cgDogCollarsApp', ['ui.bootstrap'
+,  'ngCookies',
   'ngResource',
   'ngSanitize',
   'ngRoute'

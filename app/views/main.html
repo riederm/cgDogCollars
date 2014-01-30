@@ -1,36 +1,48 @@
 <div class="header">
-  <ul class="nav nav-pills pull-right">
-    <li class="active"><a ng-href="#">Home</a></li>
-    <li><a ng-href="#">About</a></li>
-    <li><a ng-href="#">Contact</a></li>
-  </ul>
-  <h3 class="text-muted">cgDogCollars</h3>
+    <!--<ul class="nav nav-pills pull-right">
+      <li class="active"><a ng-href="#">Home</a></li>
+      <li><a ng-href="#">About</a></li>
+      <li><a ng-href="#">Contact</a></li>
+    </ul>-->
+    <a class="lead" href="/"> 
+        <img src="images/logo.jpg" alt="" width="350"/> 
+    </a>
 </div>
 
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
+<div class="row minWidthContainer">
+    <div class="col-xs-4 leftColumn">
+        <img class ="navigationButton" src="images/collection.png"> <br>
+        <h2>Kollektion</h2>
+        <p>Lorem ipsum dolor sit amet, 
+            consetetur sadipscing elitr, sed diam 
+            nonumy eirmod tempor invidunt ut labore 
+            et dolore magna aliquyam erat, sed diam voluptua.</p>
+
+    </div>
+
+
+    <div class="col-xs-4 midColumn" align="center">
+        <carousel interval="myInterval">
+      <slide ng-repeat="slide in slides" active="slide.active">
+        <img ng-src="{{slide.image}}" style="margin:auto;">
+        <div class="carousel-caption">
+          <h4>Slide {{$index}}</h4>
+          <p>{{slide.text}}</p>
+        </div>
+      </slide>
+    </carousel>
+    </div>
+
+    <div class="col-xs-4 rightColumn">
+        <img class ="navigationButton" src="images/collection.png">
+        <h2>Selbst designen</h2>
+        <p>Lorem ipsum dolor sit amet, 
+            consetetur sadipscing elitr, sed diam 
+            nonumy eirmod tempor invidunt ut labore 
+            et dolore magna aliquyam erat, sed diam voluptua.
+        </p>
+    </div>
 </div>
-
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div>
-
 <div class="footer">
-  <p>♥ from the Yeoman team</p>
+    <p>♥ from the Yeoman team</p>
 </div>
