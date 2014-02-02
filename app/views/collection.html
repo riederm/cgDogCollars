@@ -1,46 +1,15 @@
-<div class="header">
-    <!--<ul class="nav nav-pills pull-right">
-      <li class="active"><a ng-href="#">Home</a></li>
-      <li><a ng-href="#">About</a></li>
-      <li><a ng-href="#">Contact</a></li>
-    </ul>-->
-    <a class="lead" href="./"> 
-        <img src="images/logo.jpg" alt="" width="350"/> 
-    </a>
-</div>
+<div id="collarList" class="row minWidthContainer">
 
-<div class="row minWidthContainer">
-    <div style="padding-left: 40px">
-        <div style="float: left"><img src="images/collection.png" /></div>
-        <div style="float: right">
-            <h2>Halsband</h2>
-            <p>Lorem ipsum dolor sit amet, 
-                consetetur sadipscing elitr, sed diam 
-                nonumy eirmod tempor invidunt ut labore 
-                et dolore magna aliquyam erat, sed diam voluptua.</p>
+    <div ng-repeat="collar in collars" ng-animate="animate" style="transition-delay: {{$index * 500}}ms">
+        <div class="itemImg">
+            <a href ="/">
+                <img src="images/collection.png" />
+            </a>
         </div>
-    </div>
-    <div style="padding-left: 40px">
-        <img src="images/collection.png" />
-        <div>
-            <h2>Halsband</h2>
-            <p>Lorem ipsum dolor sit amet, 
-                consetetur sadipscing elitr, sed diam 
-                nonumy eirmod tempor invidunt ut labore 
-                et dolore magna aliquyam erat, sed diam voluptua.</p>
+        <div class="itemText">
+            <a href ="/"><h3>{{collar.title}}</h3></a>
+            <p>{{collar.description}}</p>
         </div>
+
     </div>
-    <div style="padding-left: 40px">
-        <img src="images/collection.png" />
-        <div>
-            <h2>Halsband</h2>
-            <p>Lorem ipsum dolor sit amet, 
-                consetetur sadipscing elitr, sed diam 
-                nonumy eirmod tempor invidunt ut labore 
-                et dolore magna aliquyam erat, sed diam voluptua.</p>
-        </div>
-    </div>
-</div>
-<div class="footer">
-    <p>♥ from the Yeoman team</p>
 </div>

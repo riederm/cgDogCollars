@@ -1,0 +1,14 @@
+
+<div class =  'collarContainer' >
+    
+</div>
+
+<div class='controls'>
+    <tabset justified="true">
+        <tab ng-repeat="rivetGroup in rivetGroups" heading="{{rivetGroup.title}}">
+            <div class="rivetContainer">
+                <img ng-repeat="rivet in rivetGroup.rivets" src="{{rivet.image}}" alt=""/>
+            </div>
+        </tab>
+    </tabset>
+</div>
