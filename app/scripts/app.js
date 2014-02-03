@@ -21,6 +21,10 @@ angular.module('cgDogCollarsApp', ['ui.bootstrap',
                       templateUrl: 'views/designer.html',
                       controller: 'DesignerCtrl'
                     })
+                    .when('/collardetail/:collarId', {
+                      templateUrl: 'views/collardetail.html',
+                      controller: 'CollardetailCtrl'
+                    })
                     .otherwise({
                         redirectTo: '/'
                     });
