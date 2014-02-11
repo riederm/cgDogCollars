@@ -131,27 +131,6 @@ body {
     padding-top: 10px;
 }
 
-.collarContainer {
-    min-width: 100%;
-    min-height: 150px;
-    border-style:solid;
-    border-width:1px;
-    margin-bottom: 20px;
-}
-
-.rivetContainer img{
-    width: 50px;
-}
-
-.rivetContainer{
-    padding: 15px;
-    border-style: solid;
-    border-left-color:  rgb(221, 221, 221);
-    border-right-color: rgb(221, 221, 221);
-    border-bottom-color: rgb(221, 221, 221);
-    border-width: 1px;
-    border-top:  0px;
-}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

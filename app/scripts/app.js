@@ -5,7 +5,8 @@ angular.module('cgDogCollarsApp', ['ui.bootstrap',
     'ngCookies',
     'ngResource',
     'ngSanitize',
-    'ngRoute'
+    'ngRoute',
+    'dragAndDrop'
 ])
         .config(function($routeProvider) {
             $routeProvider

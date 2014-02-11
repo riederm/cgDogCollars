@@ -1,13 +1,38 @@
 
-<div class =  'collarContainer' >
-    
-</div>
+
+<div ng-show="binVisible" class="rivet-bin" drop="clearRivet"><span>Niete entfernen</span></div>
+<collar>
+    <div ng-repeat="row in collar.rows">
+        <rivet-point ng-repeat="cell in row" 
+                     image = "cell.image"
+                     showBorder = "dragMode"
+                     highLight = "cell.highlight"
+                     ng-click="rivetPointClicked($index, $parent.$index)"
+                     ng-model ="cell"
+                     drop="dropOn"
+                     enter = "highlightRivetPoint"
+                     leave ="unhighlightRivetPoint"
+                                          drag></rivet-point>        
+    </div>    
+</collar>
+
+
+
+{{lastX}}<br>
+{{lastY}}
 
 <div class='controls'>
     <tabset justified="true">
         <tab ng-repeat="rivetGroup in rivetGroups" heading="{{rivetGroup.title}}">
             <div class="rivetContainer">
-                <img ng-repeat="rivet in rivetGroup.rivets" src="{{rivet.image}}" alt=""/>
+                <img ng-repeat="rivet in rivetGroup.rivets" 
+                     ng-src="{{rivet.image}}" 
+                     alt="" 
+                     class="rivet-image"
+                     drag ng-model="rivet"
+                     start="showRivetPoints"
+                     end="hideRivetPoints"
+                     />
             </div>
         </tab>
     </tabset>

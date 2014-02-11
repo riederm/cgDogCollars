@@ -1,0 +1,84 @@
+
+.rivet-point{
+    width:  25px;
+    height: 25px;
+
+    /* -webkit-border-radius: 10px; */
+    -moz-border-radius: 10px;
+    /* border-radius: 10px; */
+    /* border-style: dotted; */
+
+    margin-top: 10px;
+    margin-right: 10px;
+    display: inline-block;
+    position: relative;
+    overflow: visible;
+}
+
+.dragmode{
+        border-style: solid;
+        border-color: black;
+        border-width: 1px;
+}
+
+.highlight{
+    background-color: #ccffcc
+}
+
+.rivet-point img{
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    /* border: 1px solid red; */
+}
+
+
+.rivet-image{
+    width: 35px;
+    height: 35px;
+}
+
+.collar-scroll-container{
+
+}
+
+.rivetContainer img{
+    margin-right: 10px;
+}
+
+.collarContainer {
+    min-width: 100%;
+    min-height: 150px;
+    border-style:solid;
+    border-width:1px;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+.rivetContainer{
+    padding: 15px;
+    border-style: solid;
+    border-left-color:  rgb(221, 221, 221);
+    border-right-color: rgb(221, 221, 221);
+    border-bottom-color: rgb(221, 221, 221);
+    border-width: 1px;
+    border-top:  0px;
+}
+
+.rivet-bin{
+    min-width: 100%;
+    min-height: 60px;
+    border-style: dashed;
+    background-color: #cccccc; 
+    border-width:1px;
+    margin-bottom: 20px;
+    text-align:center;
+    line-height: 60px;
+    
+}
