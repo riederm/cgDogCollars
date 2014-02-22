@@ -22,7 +22,7 @@ function Rivet(x, y) {
     
     this.isOccupied = function(){
         return this.image !== "";
-    };
+    }
 }
 
 function Collar(width, height) {
@@ -77,14 +77,8 @@ function Collar(width, height) {
 
 angular.module('cgDogCollarsApp')
         .controller('DesignerCtrl', function($scope, $http) {
-            /*$http.get('data/collar.json').success(function(data) {
+            $http.get('data/collar.json').success(function(data) {
                 $scope.rivetGroups = data;
-            });*/
-            gapi.client.rivet.rivets.list().execute(function(resp){
-                $scope.$apply(function() {
-                    $scope.rivetGroups = resp.collections;
-                });
-                console.log(resp);
             });
 
             var rows = 5;

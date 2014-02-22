@@ -5,7 +5,7 @@
             <url>app/index.html</url>
             <bookmark id="1">
                 <name/>
-                <line>83</line>
+                <line>90</line>
                 <key/>
             </bookmark>
         </file>
@@ -14,8 +14,8 @@
         <group>
             <file>file:/Users/mri/Projects/cgDogCollars/app/data/collar.json</file>
             <file>file:/Users/mri/Projects/cgDogCollars/app/views/designer.html</file>
+            <file>file:/Users/mri/Projects/cgDogCollars/app/views/main.html</file>
             <file>file:/Users/mri/Projects/cgDogCollars/app/scripts/controllers/designer.js</file>
-            <file>file:/Users/mri/Projects/cgDogCollars/app/scripts/directives/rivet-point.js</file>
             <file>file:/Users/mri/Projects/cgDogCollars/app/styles/rivets.css</file>
             <file>file:/Users/mri/Projects/cgDogCollars/app/index.html</file>
         </group>

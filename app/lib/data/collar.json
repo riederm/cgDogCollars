@@ -1,0 +1,56 @@
+[
+               {
+                    "title": "Spitznieten",
+                    "rivets": [
+                        {"image": "images/rivets/number_1.png",
+                            "voidZones": [
+                                {"relX": -1, "relY": 0},
+                                {"relX": 1, "relY": 0},
+                                {"relX": 0, "relY": -1},
+                                {"relX": 0, "relY": 1}
+                            ]},
+                        {"image": "images/rivets/number_2.png",
+                            "voidZones": [
+                                {"relX": -1, "relY": 0},
+                                {"relX": 1, "relY": 0},
+                                {"relX": 0, "relY": -1},
+                                {"relX": 0, "relY": 1},
+                                {"relX": -1, "relY": -1},
+                                {"relX": 1, "relY": -1},
+                                {"relX": -1, "relY": 1},
+                                {"relX": 1, "relY": 1}
+                            ]},
+                        {"image": "images/rivets/number_3.png",
+                            "voidZones": [
+                                {"relX": -1, "relY": 0},
+                                {"relX": 1, "relY": 0},
+                                {"relX": 0, "relY": -1},
+                                {"relX": 0, "relY": 1}
+                            ]}
+                    ]
+                },
+                {
+                    "title": "Motivnieten",
+                    "rivets": [
+                        {"image": "images/rivets/number_2.png"},
+                        {"image": "images/rivets/number_2.png"},
+                        {"image": "images/rivets/number_2.png"}
+                    ]
+                },
+                {
+                    "title": "Strassnieten",
+                    "rivets": [
+                        {"image": "images/rivets/number_3.png"},
+                        {"image": "images/rivets/number_3.png"},
+                        {"image": "images/rivets/number_3.png"}
+                    ]
+                },
+                {
+                    "title": "Andere",
+                    "rivets": [
+                        {"image": "images/rivets/number_4.png"},
+                        {"image": "images/rivets/number_4.png"},
+                        {"image": "images/rivets/number_4.png"}
+                    ]
+                }
+            ]

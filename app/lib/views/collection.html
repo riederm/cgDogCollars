@@ -1,0 +1,14 @@
+<div id="collarList" class="row minWidthContainer">
+
+    <div ng-repeat="collar in collars" ng-animate="animate" style="transition-delay: {{$index * 500}}ms">
+        <div class="itemImg">
+            <a href ="/">
+                <img src="images/collection.png" />
+            </a>
+        </div>
+        <div class="itemText">
+            <a href ="#/collardetail/{{$index}}"><h3>{{collar.title}}</h3></a>
+            <p>{{collar.description}}</p>
+        </div>
+    </div>
+</div>
