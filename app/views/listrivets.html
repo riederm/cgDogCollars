@@ -1,0 +1,22 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Bild</th>
+            <th>Preis</th>
+            <th>tags</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="rivet in rivets">
+            <td>{{rivet.name}}</td>
+            <td>{{rivet.image}}</td>
+            <td>{{rivet.price}}</td>
+            <td>{{rivet.tags}}</td>
+            <td>
+                <a href="#/edit">edit</a><br>
+                <a href="#/delete">delete</a>
+        </tr>
+    </tbody>
+ </table>

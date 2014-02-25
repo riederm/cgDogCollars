@@ -1,7 +1,7 @@
-application: your-app-id
+application: cg-dogcollars
 version: 1
 runtime: python27
-threadsafe: true
+threadsafe: no
 api_version: 1
 
 handlers:

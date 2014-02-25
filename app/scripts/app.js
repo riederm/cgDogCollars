@@ -26,6 +26,14 @@ angular.module('cgDogCollarsApp', ['ui.bootstrap',
                       templateUrl: 'views/collardetail.html',
                       controller: 'CollardetailCtrl'
                     })
+                    .when('/addRivets/:rivetId', {
+                      templateUrl: 'views/addrivets.html',
+                      controller: 'AddrivetsCtrl'
+                    })
+                    .when('/listRivets', {
+                      templateUrl: 'views/listrivets.html',
+                      controller: 'ListrivetsCtrl'
+                    })
                     .otherwise({
                         redirectTo: '/'
                     });
