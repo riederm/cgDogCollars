@@ -19,14 +19,25 @@ class RivetModel(ndb.Model):
     def fromMessage(rivetMessage):
         return RivetModel(image=rivetMessage.image, name=rivetMessage.name, voidZones=[], tags=rivetMessage.tags)
 
+    def fillFromMessage(self, msg):
+        self.image = msg.image
+        self.name = msg.name
+        self.voidZones = [PointModel(x=z.x, y=z.y) for z in msg.voidZones]
+        self.tags = msg.tags
+
     def toMessage(self):
-        return RivetMessage(image=self.image, name=self.name, voidZones=[], tags=self.tags)
+        return Rivet(
+                rivetId=self.key.urlsafe(), 
+                image=self.image, 
+                name=self.name, 
+                voidZones=[Point(x=p.x, y=p.y) for p in self.voidZones], 
+                tags=self.tags)
 
 class Point(messages.Message):
     x = messages.IntegerField(1, required=True)
     y = messages.IntegerField(2, required=True)
 
-class RivetMessage(messages.Message):
+class Rivet(messages.Message):
     rivetId = messages.StringField(1)
     image  = messages.StringField(2, required=True)
     name = messages.StringField(3)
@@ -35,7 +46,7 @@ class RivetMessage(messages.Message):
 
 class RivetCollection(messages.Message):
     name = messages.StringField(1)
-    rivets = messages.MessageField(RivetMessage, 2, repeated=True)
+    rivets = messages.MessageField(Rivet, 2, repeated=True)
 
 class RivetCollections(messages.Message):
     collections = messages.MessageField(RivetCollection, 1, repeated=True)
@@ -58,30 +69,50 @@ class RivetApi(remote.Service):
         models = RivetModel.query().fetch(9999)
 
         rivetArray = [r.toMessage() for r in models]
-
-        return RivetCollections(collections=[RivetCollection(name="", rivets=rivetArray)])
+	return RivetCollections(collections=[RivetCollection(name='', rivets=rivetArray)])
+        
 
     '''
         insert rivet
     '''
-    @endpoints.method(RivetMessage, RivetMessage,
+    @endpoints.method(Rivet, Rivet,
                         path='Rivet', http_method='POST',
                         name='rivet.add')
     def rivet_add(self, request):
         theTags = [t.strip() for t in request.tags]
-        model = RivetModel(image=request.image, name=request.name, voidZones=[], tags=theTags)
+        theVoidZones = [PointModel(x=z.x, y=z.y) for z in request.voidZones]
+        if request.rivetId is not None:
+            modelKey = ndb.Key(urlsafe=request.rivetId)
+            model = modelKey.get()
+            model.fillFromMessage(request)
+        else:
+            model = RivetModel(image=request.image, name=request.name, voidZones=theVoidZones, tags=theTags)
+        
         model.put()
-        return request;
+        return request
 
     '''
         get rivet
     '''
-    @endpoints.method(RivetRequest, RivetMessage,
+    @endpoints.method(RivetRequest, Rivet,
                         path='Rivets', http_method='GET',
                         name='get')
     def rivet_get(self, request):
-        model = RivetModel.get_by_id(request.key)
+        modelKey = ndb.Key(urlsafe=request.key)
+        model = modelKey.get()
         return model.toMessage()
     
+	'''
+		delete rivet
+	'''
+    @endpoints.method(RivetRequest, message_types.VoidMessage,
+                        path='Rivets', http_method='DELETE',
+                        name='delete')
+    def rivet_delete(self, request):
+        modelKey = ndb.Key(urlsafe=request.key)
+        model = modelKey.delete()
+        return message_types.VoidMessage()
+
+
 application= endpoints.api_server([RivetApi])
 

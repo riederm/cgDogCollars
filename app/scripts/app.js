@@ -26,7 +26,7 @@ angular.module('cgDogCollarsApp', ['ui.bootstrap',
                       templateUrl: 'views/collardetail.html',
                       controller: 'CollardetailCtrl'
                     })
-                    .when('/addRivets/:rivetId', {
+                    .when('/addRivets/:rivetId?', {
                       templateUrl: 'views/addrivets.html',
                       controller: 'AddrivetsCtrl'
                     })

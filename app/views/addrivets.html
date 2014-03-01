@@ -9,10 +9,22 @@
   </div>
   <div class="form-group">
     <label>Platzbedarf</label>
+  
+    <table>
+        <tr ng-repeat='line in voidZones.lines track by $index'->
+            <td ng-repeat='point in line track by $index'>
+                <div style="width:20px; height:20px:"> 
+                    <input type='checkbox' ng-model='point.value'>
+                </div>
+            </td>
+        </tr>    
+    </table>
   </div>
   <div class="form-group">
     <label>Tags</label>
     <input type="text" class="form-control" ng-model="rivet.tags" placeholder="tags eingeben">
   </div>
-    <button ng-click="save(rivet.key)">speichern</button>
+    <button ng-click="save()" ng-enabled="form.enabled">speichern</button>
+    <button ng-click="delete()" ng-enabled="form.deleteEnabled">löschen</button>
+</form>
 </form>

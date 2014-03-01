@@ -21,7 +21,7 @@
         <!-- endbuild -->
         <link href="styles/animation.css" rel="stylesheet" type="text/css"/>
         <link href="styles/rivets.css" rel="stylesheet" type="text/css"/>
-        
+        <link href="styles/animage.css" rel="stylesheet" type="text/css"/>       
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -83,7 +83,7 @@
 
             function startApp() {
 
-                var ROOT = 'https://cg-dogcollars2.appspot.com/_ah/api';
+                var ROOT = 'http://localhost:8080/_ah/api';
                 gapi.client.load('rivet', 'v1', function() {
                     angular.bootstrap(document, ["cgDogCollarsApp"]);
                 }, ROOT);
@@ -91,13 +91,14 @@
 
         </script>
         
-        <script src="lib/angular.js" type="text/javascript"></script>
-        <script src="lib/ui-bootstrap-tpls-0.10.0.min.js" type="text/javascript"></script>
-        <script src="lib/angular-resource.min.js" type="text/javascript"></script>
-        <script src="lib/angular-cookies.min.js" type="text/javascript"></script>
-        <script src="lib/angular-sanitize.min.js" type="text/javascript"></script>
-        <script src="lib/angular-route.min.js" type="text/javascript"></script>
-        <script src="lib/angular-dnd.js" type="text/javascript"></script>
+        <script src="lib/angular.js"></script>
+        <script src="lib/ui-bootstrap-tpls-0.10.0.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-resource.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-cookies.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-sanitize.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route.min.js"></script>
+        <script src="lib/angular-dnd.js"></script>
+        <script src="lib/underscore-min.js"></script>
         
         <!-- endbower -->
         <!-- endbuild -->
