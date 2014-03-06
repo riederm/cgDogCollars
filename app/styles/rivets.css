@@ -3,6 +3,13 @@ div[ng-view].ng-enter {
     animation: fadeInRight 0.5s;
 }
 
+.ring-container img{
+    position: absolute;
+    left: -12px;
+    top: -26px;
+    height: 260px;
+}
+
 .rivet-point{
     width:  25px;
     height: 25px;
@@ -53,7 +60,14 @@ div[ng-view].ng-enter {
 }
 
 .left-rivet-group{
-    margin-right: 100px;
+    /*margin-right: 100px;*/
+}
+
+.ring-container{
+    margin-right: 90px;
+    margin-left: 90px;
+    position: relative;
+    vertical-align: top;
 }
 
 .rivet-image{
@@ -67,6 +81,15 @@ div[ng-view].ng-enter {
     margin-bottom: 20px;
     margin-top: 40px;
     padding-right: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+
+.collar-preview{
+    margin-bottom: 20px;
+    margin-top: 40px;
+    width: 100%;
 }
 
 .rivetContainer img{
@@ -75,12 +98,12 @@ div[ng-view].ng-enter {
 
 .collarContainer {
     background-image : url("http://subtlepatterns.com/patterns/white_leather.png");
+    background-repeat: repeat;
     border-radius: 5px;
     -webkit-box-shadow: 0px 1px 10px rgba(0,0,0,0.5);
     -moz-box-shadow: 0px 1px 10px rgba(0,0,0,0.5);
     box-shadow: 0px 1px 10px rgba(0,0,0,0.5);
     width: 2500px;
-    min-height: 150px;   
     margin: 10px;
     padding-top: 5px;
     padding-bottom: 10px;

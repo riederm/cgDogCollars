@@ -16,11 +16,13 @@ angular.module('cgDogCollarsApp')
  
                     var center = Math.floor(width/2);                   
                     //set the voidZone-points to true
-                    for(var i=0; i<$scope.rivet.voidZones.length; i++){
-                        var zone = $scope.rivet.voidZones[i];
-                        var y = parseInt(zone.y, 10);
-                        var x = parseInt(zone.x, 10);
-                        $scope.voidZones.lines[y+center][x+center].value = true;
+                    if ($scope.rivet.voidZones){
+                        for(var i=0; i<$scope.rivet.voidZones.length; i++){
+                            var zone = $scope.rivet.voidZones[i];
+                            var y = parseInt(zone.y, 10);
+                            var x = parseInt(zone.x, 10);
+                            $scope.voidZones.lines[y+center][x+center].value = true;
+                        }
                     }
 		        });
 	        });         

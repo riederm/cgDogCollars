@@ -1,0 +1,16 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Datum</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="collar in collars">
+            <td>{{collar.name}}</td>
+            <td>{{collar.lastEdit}}</td>
+            <td><a href="#/designer/{{collar.key}}">edit</a></td>
+        </tr>
+    </tbody>
+ </table>

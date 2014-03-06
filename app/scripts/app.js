@@ -18,7 +18,7 @@ angular.module('cgDogCollarsApp', ['ui.bootstrap',
                         templateUrl: 'views/collection.html',
                         controller: 'CollectionCtrl'
                     })
-                    .when('/designer', {
+                    .when('/designer/:key?', {
                       templateUrl: 'views/designer.html',
                       controller: 'DesignerCtrl'
                     })
@@ -33,6 +33,10 @@ angular.module('cgDogCollarsApp', ['ui.bootstrap',
                     .when('/listRivets', {
                       templateUrl: 'views/listrivets.html',
                       controller: 'ListrivetsCtrl'
+                    })
+                    .when('/listCollars', {
+                      templateUrl: 'views/listcollars.html',
+                      controller: 'ListcollarsCtrl'
                     })
                     .otherwise({
                         redirectTo: '/'
