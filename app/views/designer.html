@@ -1,73 +1,102 @@
 
-<a href ="#/listCollars">Liste</a><br>
-<button class="btn btn-default" ng-click="openSettings()">Einstellungen</button>
-<input type="text" ng-model="collarName"/><br>
-zoom: {{zoom}}% <br> <input type="range" value="100" min="30" max="140" step="10" ng-model="zoom"/>
-<div class="collar-preview" style="zoom: {{zoom}}%;">
-    <collar>
-        <div class="rivet-group left-rivet-group" >
-            <div ng-repeat="row in leftCollar.iterableRow track by $index">
-                <rivet-point ng-repeat="cell in row track by $index" 
-                             image = "cell.rivet.image"
-                             showBorder = "no"
-                             highLight = "no"
-                             enabled = "no"
-                             ng-model ="cell"></rivet-point>        
-            </div> 
+<div class="input-group input-group-lg">
+    <span class="input-group-addon">Name</span>
+    <input type="text" class="form-control" ng-model="collarName" placeholder="Geben Sie einen Namen ein">
+</div>
+<br>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div>
+        <button class="btn btn-primary" ng-click="openSettings()" tooltip="Größe und Farbe des Halsbands"><span class="glyphicon glyphicon-cog"></span> Einstellungen</button>
+        <button class="btn btn-primary" ng-click="openMyCollars()"  tooltip="Alle meine bisher erstellten Halsbänder"><span class="glyphicon glyphicon-user"></span> Meine Halsbänder</button>
+        <button class="btn btn-primary" ng-model="showPreview" btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false" >
+            <span class="glyphicon glyphicon-search"></span> Vorschau
+        </button>
         </div>
-        <div class="rivet-group ring-container">
-            <img src="images/ring_silver.png"/>
+        <div collapse="!showPreview">
+            zoom: {{zoom}}% <br> <input type="range" value="100" min="30" max="140" step="10" ng-model="zoom"/>
+            <div class="collar-preview" style="zoom: {{zoom}}%;">
+                <collar>
+                    <div class="rivet-group left-rivet-group" >
+                        <div ng-repeat="row in leftCollar.iterableRow track by $index">
+                            <rivet-point ng-repeat="cell in row track by $index"
+                                         ng-show = "cell.isVisible"
+                                         image = "cell.rivet.image"
+                                         showBorder = "no"
+                                         highLight = "no"
+                                         enabled = "no"
+                                         ng-model ="cell"></rivet-point>        
+                        </div> 
+                    </div>
+                    <div class="rivet-group ring-container">
+                        <img src="images/ring_silver.png"/>
+                    </div>
+                    <div class="rivet-group" >
+                        <div ng-repeat="row in rightCollar.iterableRow track by $index">
+                            <rivet-point ng-repeat="cell in row track by $index" 
+                                         ng-show = "cell.isVisible"
+                                         image = "cell.rivet.image"
+                                         showBorder = "no"
+                                         highLight = "no"
+                                         enabled = "no"
+                                         ng-model ="cell"></rivet-point>        
+                        </div>    
+                    </div>
+                </collar>
+            </div>
         </div>
-        <div class="rivet-group" >
-            <div ng-repeat="row in rightCollar.iterableRow track by $index">
-                <rivet-point ng-repeat="cell in row track by $index" 
-                             image = "cell.rivet.image"
-                             showBorder = "no"
-                             highLight = "no"
-                             enabled = "no"
-                             ng-model ="cell"></rivet-point>        
-            </div>    
-        </div>
-    </collar>
+    </div>
+</div>
+
+<div class="toolbar">
+    <!--<button class="btn btn-toolbar" ng-click="toolbar.copyRightToLeft()">nach Links kopieren</button>
+    <button class="btn btn-toolbar" ng-click="toolbar.copyLeftToRight()">nach Rechts kopieren</button>-->
+    <button class="btn btn-default" ng-click="toolbar.mirrorRightToLeft()"><span class="glyphicon glyphicon-backward"></span> nach Links spiegeln</button>
+    <button class="btn btn-default" ng-click="toolbar.mirrorLeftToRight()">nach Rechts spiegeln <span class="glyphicon glyphicon-forward"></span> </button>
+    <button class="btn btn-default" ng-click="toolbar.deleteAll()"><span class="glyphicon glyphicon-remove"></span> alles löschen </button>
 </div>
 
 <div class ="collar-scroll-container"> <!-- style="zoom: {{zoom}}%;">-->
-    <collar>
-        <div class="rivet-group left-rivet-group" >
-            <div ng-repeat="row in leftCollar.iterableRow track by $index">
-                <rivet-point ng-repeat="cell in row track by $index" 
-                             image = "cell.rivet.image"
-                             showBorder = "dragMode"
-                             highLight = "cell.highlight"
-                             enabled = "cell.available"
-                             ng-click="rivetPointClicked($index, $parent.$index)"
-                             ng-model ="cell"
-                             drop="dropOn"
-                             enter = "highlightRivetPoint"
-                             leave ="unhighlightRivetPoint"
-                             drag></rivet-point>        
-            </div> 
-        </div>
-        <div class="rivet-group ring-container">
-            <img src="images/ring_silver.png"/>
-        </div>
-        <div class="rivet-group" >
-            <div ng-repeat="row in rightCollar.iterableRow track by $index">
-                <rivet-point ng-repeat="cell in row track by $index" 
-                             image = "cell.rivet.image"
-                             showBorder = "dragMode"
-                             highLight = "cell.highlight"
-                             enabled = "cell.available"
-                             ng-click="rivetPointClicked($index, $parent.$index)"
-                             ng-model ="cell"
-                             drop="dropOn"
-                             enter = "highlightRivetPoint"
-                             leave ="unhighlightRivetPoint"
-                             drag></rivet-point>        
-            </div>    
-        </div>
-    </collar>
-
+    <progressbar ng-show="!progress.done" class="progress-striped active" max="progress.steps" value="progress.value">{{progress.message}}</progressbar>
+    <div ng-show="progress.done">
+        <collar>
+            <div class="rivet-group left-rivet-group" >
+                <div ng-repeat="row in leftCollar.iterableRow">
+                    <rivet-point ng-repeat="cell in row track by $index" 
+                                 image = "cell.rivet.image"
+                                 showBorder = "dragMode"
+                                 ng-show = "cell.isVisible"
+                                 highLight = "cell.highlight"
+                                 enabled = "cell.available"
+                                 ng-click="rivetPointClicked(cell.x, cell.y)"
+                                 ng-model ="cell"
+                                 drop="dropOn"
+                                 enter = "highlightRivetPoint"
+                                 leave ="unhighlightRivetPoint"
+                                 drag></rivet-point>        
+                </div> 
+            </div>
+            <div class="rivet-group ring-container">
+                <img src="images/ring_silver.png"/>
+            </div>
+            <div class="rivet-group" >
+                <div ng-repeat="row in rightCollar.iterableRow">
+                    <rivet-point ng-repeat="cell in row track by $index" 
+                                 image = "cell.rivet.image"
+                                 showBorder = "dragMode"
+                                 ng-show = "cell.isVisible"
+                                 highLight = "cell.highlight"
+                                 enabled = "cell.available"
+                                 ng-click="rivetPointClicked(cell.x, cell.y)"
+                                 ng-model ="cell"
+                                 drop="dropOn"
+                                 enter = "highlightRivetPoint"
+                                 leave ="unhighlightRivetPoint"
+                                 drag></rivet-point>        
+                </div>    
+            </div>
+        </collar>
+    </div>
 </div>
 <div class='controls'>
     <tabset justified="true">
@@ -86,28 +115,66 @@ zoom: {{zoom}}% <br> <input type="range" value="100" min="30" max="140" step="10
     </tabset>
 </div>
 
-<script type="text/ng-template" id="designerSettings.html" src='views/designerSettings.html'>
+{{lastX}},{{lastY}}
+
+<script type="text/ng-template" id="designerSettings.html" >
     <div class="modal-header">
-        <h3>Halsband Einstellungen</h3>
+    <h3>Halsband Einstellungen</h3>
     </div>
     <div class="modal-body">
-        <div class="form-group">
-            <label>Halsband-Breite</label>
-            <table>
-                <tr>
-                    <td>Breite:</td>
-                    <td><select ng-model="collarWidth" ng-options="s.title for s in availableWidths"></select></td>
-                </tr>
-                <tr>
-                    <td>Höhe:</td>
-                    <td><select ng-model="collarHeight" ng-options="s.title for s in availableHeights"></select></td>
-                </tr>
-            </table>
-        </div>
+    <div class="form-group">
+    <label>Halsband-Breite</label>
+    <table>
+    <tr>
+    <td>Breite:</td>
+    <td><select 
+    ng-model="collarWidth" 
+    ng-options="s.title for s in availableWidths"
+    ng-change="selectWidth(collarWidth)"></select></td>
+    </tr>
+    <tr>
+    <td>Höhe:</td>
+    <td><select 
+    ng-model="collarHeight" 
+    ng-options="s.title for s in availableHeights"
+    ng-change="selectHeight(collarHeight)"
+    ></select></td>
+    </tr>
+    </table>
+    </div>
     </div>
     <div class="modal-footer">
-        <button class="btn" ng-click="ok()">OK</button>
-        <button class="btn" ng-click="cancel()">Cancel</button>
+    <button class="btn" ng-click="ok()">OK</button>
+    <button class="btn" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="myCollars.html" >
+    <div class="modal-header">
+    <h3>Meine Halsbänder</h3>
+    </div>
+    <div class="modal-body">
+    <div class="form-group">
+    <table class="table">
+    <thead>
+    <tr>
+    <th>Name</th>
+    <th>Datum</th>
+    <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="collar in collars">
+    <td>{{collar.name}}</td>
+    <td>{{collar.lastEdit}}</td>
+    <td><button class="btn btn-default" ng-click="select(collar.key)">Laden</button></td>
+    </tr>
+    </tbody>
+    </table>
+    </div>
+    </div>
+    <div class="modal-footer">
+    <button class="btn" ng-click="cancel()">Zurück</button>
     </div>
 </script>
 
